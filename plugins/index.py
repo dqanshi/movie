@@ -58,7 +58,7 @@ async def send_for_index(bot, message):
         last_msg_id = int(match.group(5))
         if chat_id.isnumeric():
             chat_id  = int(("-100" + chat_id))
-    elif message. message.forward_from_chat.type == 'channel':
+    elif message.forward_from_chat.type == 'channel':
         last_msg_id = message.forward_from_message_id
         chat_id = message.forward_from_chat.username or message.forward_from_chat.id
     else:
@@ -134,6 +134,9 @@ async def set_skip_number(bot, message):
 
 async def index_files_to_db(lst_msg_id, chat, msg, bot):
     total_files = 0
+    duplicate = 0
+    errors = 0
+    deleted = 0
     async with lock:
         try:
             total = lst_msg_id + 1
@@ -163,10 +166,16 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot):
                             continue
                     media.file_type = file_type
                     media.caption = message.caption
-                    await save_file(media)
-                    total_files += 1
+                    aynav, vnay = await save_file(media)
+                    if aynav:
+                        total_files += 1
+                    elif vnay == 0:
+                        duplicate += 1
+                    elif vnay == 2:
+                        errors += 1
                 except TypeError:
                     print("Skipping deleted messages (if this continues for long use /setskip to set a skip number)")
+                    deleted += 1
                 except Exception as e:
                     print(e)
                 current += 1
@@ -174,10 +183,10 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot):
                     can = [[InlineKeyboardButton('Cancel', callback_data='index_cancel')]]
                     reply = InlineKeyboardMarkup(can)
                     await msg.edit_text(
-                        text=f"Total messages fetched: <code>{current}</code>\nTotal messages saved: <code>{total_files}</code>",
+                        text=f"Total messages fetched: <code>{current}</code>\nTotal messages saved: <code>{total_files}</code>\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nErrors Occured: <code>{errors}</code>",
                         reply_markup=reply)
         except Exception as e:
             logger.exception(e)
             await msg.edit(f'Error: {e}')
         else:
-            await msg.edit(f'Total <code>{total_files}</code> Saved To DataBase!')
+            await msg.edit(f'Succesfully saved <code>{total_files}</code> to dataBase!\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nErrors Occured: <code>{errors}</code>')
