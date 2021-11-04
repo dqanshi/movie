@@ -12,7 +12,7 @@ class script(object):
 ✯ 𝙲𝚁𝙴𝙰𝙳𝙸𝚃  : 𝚃𝚎𝚊𝚖 𝙴𝚟𝚊 𝙼𝚊𝚛𝚒𝚊
 ✯ 𝙱𝚄𝙸𝙻𝙳 𝚂𝚃𝙰𝚃𝚄𝚂: v1.0.1 [ 𝙱𝙴𝚃𝙰 ]"""
     SOURCE_TXT = """<b>NOTE:</b>
-- Eva Maria is a open source project. 
+- 𝑺𝒏𝒐𝒘 𝑾𝒉𝒊𝒕𝒆 is a open source project. 
 - Source - https://t.me/danger_bots  
 
 <b>DEVS:</b>
