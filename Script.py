@@ -19,7 +19,7 @@ class script(object):
 - <a href=https://t.me/danger_bots>Team dangerbots</a>"""
     MANUELFILTER_TXT = """Help: <b>Filters</b>
 
-- Filter is the feature were users can set automated replies for a particular keyword and EvaMaria will respond whenever a keyword is found the message
+- Filter is the feature were users can set automated replies for a particular keyword and 𝑺𝒏𝒐𝒘 𝑾𝒉𝒊𝒕𝒆 will respond whenever a keyword is found the message
 
 <b>NOTE:</b>
 1. 𝑺𝒏𝒐𝒘 𝑾𝒉𝒊𝒕𝒆 should have admin privillage.
