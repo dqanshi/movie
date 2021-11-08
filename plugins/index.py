@@ -138,6 +138,7 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot):
     duplicate = 0
     errors = 0
     deleted = 0
+    no_media = 0
     async with lock:
         try:
             total = lst_msg_id + 1
@@ -174,20 +175,24 @@ async def index_files_to_db(lst_msg_id, chat, msg, bot):
                         duplicate += 1
                     elif vnay == 2:
                         errors += 1
-                except AttributeError:
-                    logger.warning("Skipping deleted messages (if this continues for long use /setskip to set a skip number)")
-                    deleted += 1
                 except Exception as e:
-                    logger.exception(e)
+                    if "NoneType" in str(e):
+                        if not media:
+                            no_media += 1
+                        else:
+                            deleted += 1
+                        logger.warning("Skipping deleted / Non-Media messages (if this continues for long, use /setskip to set a skip number)")     
+                    else:
+                        logger.exception(e)
                 current += 1
                 if current % 20 == 0:
                     can = [[InlineKeyboardButton('Cancel', callback_data='index_cancel')]]
                     reply = InlineKeyboardMarkup(can)
                     await msg.edit_text(
-                        text=f"Total messages fetched: <code>{current}</code>\nTotal messages saved: <code>{total_files}</code>\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nErrors Occured: <code>{errors}</code>",
+                        text=f"Total messages fetched: <code>{current}</code>\nTotal messages saved: <code>{total_files}</code>\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media}</code>\nErrors Occured: <code>{errors}</code>",
                         reply_markup=reply)
         except Exception as e:
             logger.exception(e)
             await msg.edit(f'Error: {e}')
         else:
-            await msg.edit(f'Succesfully saved <code>{total_files}</code> to dataBase!\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nErrors Occured: <code>{errors}</code>')
+            await msg.edit(f'Succesfully saved <code>{total_files}</code> to dataBase!\nDuplicate Files Skipped: <code>{duplicate}</code>\nDeleted Messages Skipped: <code>{deleted}</code>\nNon-Media messages skipped: <code>{no_media}</code>\nErrors Occured: <code>{errors}</code>')
