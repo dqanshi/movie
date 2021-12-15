@@ -47,6 +47,14 @@
 
 
 ## Deploy
+
+<p align="left">
+<a href="https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2FZauteKm%2Fauto-filter-bot-v3"
+">
+     <img height="30px" src="https://railway.app/button.svg">
+  </a>
+</p>
+
 You can deploy this bot anywhere.
 
 <i>**[Watch Deploying Tutorial...](https://youtu.be/1G1XwEOnxxo)**</i>
