@@ -42,19 +42,8 @@
 * `DATABASE_NAME`: Name of the database in [mongoDB](https://www.mongodb.com). For more help watch this [video](https://youtu.be/1G1XwEOnxxo)
 * `LOG_CHANNEL` : A channel to log the activities of bot. Make sure bot is an admin in the channel.
 ### Optional Variables
-* `PICS`: Telegraph links of images to show in start message.( Multiple images can be used seperated by space )
-* Check [info.py](https://github.com/EvamariaTG/evamaria/blob/master/info.py) for more
-
-
-## Deploy
-
-<p align="left">
-<a href="https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Fdqansji%2FEvaMaria"
-">
-     <img height="30px" src="https://railway.app/button.svg">
-  </a>
-</p>
-
+* `PICS`: Telegraph links of images to show in 
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Fdqanshi%2FEvaMaria&plugins=mongodb&envs=BOT_TOKEN%2CAPI_ID%2CAPI_HASH%2CCHANNELS%2CADMINS%2CLOG_CHANNEL)
 You can deploy this bot anywhere.
 
 <i>**[Watch Deploying Tutorial...](https://youtu.be/1G1XwEOnxxo)**</i>
