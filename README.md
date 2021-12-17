@@ -52,6 +52,8 @@
 <a href="https://heroku.com/deploy?template=https://github.com/dqanshi/evamaria/tree/master">
   <img src="https://www.herokucdn.com/deploy/button.svg" alt="Deploy">
 </a>
+</p>
+<p>
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Fdqanshi%2FEvaMaria&plugins=mongodb&envs=BOT_TOKEN%2CAPI_ID%2CAPI_HASH%2CCHANNELS%2CADMINS%2CLOG_CHANNEL)
 </p>
 </details>
