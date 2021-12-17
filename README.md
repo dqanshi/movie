@@ -54,7 +54,8 @@
 </a>
 </p>
 <p>
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Fdqanshi%2FEvaMaria&plugins=mongodb&envs=BOT_TOKEN%2CAPI_ID%2CAPI_HASH%2CCHANNELS%2CADMINS%2CLOG_CHANNEL)]
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template?template=https%3A%2F%2Fgithub.com%2Fdqanshi%2FEvaMaria&plugins=mongodb&envs=BOT_TOKEN%2CAPI_ID%2CAPI_HASH%2CCHANNELS%2CADMINS%2CLOG_CHANNEL)
+You can deploy this bot anywhere.
 </p>
 </details>
 
