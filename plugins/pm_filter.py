@@ -3,7 +3,6 @@ import asyncio
 import re
 import ast
 import math
-from plugins.commands import invite_link
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
 import pyrogram
@@ -57,7 +56,6 @@ async def next_page(bot, query):
         n_offset = int(n_offset)
     except:
         n_offset = 0
-
     if not files:
         return
     settings = await get_settings(query.message.chat.id)
@@ -83,6 +81,11 @@ async def next_page(bot, query):
             ]
             for file in files
         ]
+     try:
+         invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
+     except ChatAdminRequired:
+            logger.error("Make sure Bot is admin in Forcesub channel")
+            return
     btn.insert(0, 
         [
                 InlineKeyboardButton(
@@ -90,8 +93,7 @@ async def next_page(bot, query):
                 )
         ]
     )
-
-
+    
     if 0 < offset <= 10:
         off_set = 0
     elif offset == 0:
