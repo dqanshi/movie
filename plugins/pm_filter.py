@@ -81,15 +81,10 @@ async def next_page(bot, query):
             ]
             for file in files
         ]
-     try:
-         invite_link = await client.create_chat_invite_link(int(AUTH_CHANNEL))
-     except ChatAdminRequired:
-            logger.error("Make sure Bot is admin in Forcesub channel")
-            return
     btn.insert(0, 
         [
                 InlineKeyboardButton(
-                    "💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 💢", url=f"{invite_link.invite_link}"
+                    "💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 💢", url="t.me/am_dq_fan"
                 )
         ]
     )
@@ -674,7 +669,7 @@ async def auto_filter(client, msg, spoll=False):
     btn.insert(0, 
         [
                 InlineKeyboardButton(
-                    "💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 💢", url=f"{invite_link.invite_link}"
+                    "💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 💢", url="t.me/am_dq_fan"
                 )
         ]
                
