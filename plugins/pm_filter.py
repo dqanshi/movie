@@ -38,7 +38,6 @@ async def give_filter(client, message):
 
 
 @Client.on_callback_query(filters.regex(r"^next"))
-invite_link = await getInviteLink(client)
 async def next_page(bot, query):
     ident, req, key, offset = query.data.split("_")
     if int(req) not in [query.from_user.id, 0]:
@@ -91,13 +90,6 @@ async def next_page(bot, query):
     else:
         off_set = offset - 10
     if n_offset == 0:
-        btn.append(
-            [
-                InlineKeyboardButton(
-                    "💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 💢", url=invite_link.invite_link
-                )
-            ]
-        ),
         btn.append(
             [InlineKeyboardButton("⏪ BACK", callback_data=f"next_{req}_{key}_{off_set}"),
              InlineKeyboardButton(f"📃 Pages {math.ceil(int(offset) / 10) + 1} / {math.ceil(total / 10)}",
@@ -668,7 +660,13 @@ async def auto_filter(client, msg, spoll=False):
             ]
             for file in files
         ]
-
+        btn.append(
+            [
+                InlineKeyboardButton(
+                    "💢 𝗝𝗼𝗶𝗻 𝗢𝘂𝗿 𝗠𝗮𝗶𝗻 𝗰𝗵𝗮𝗻𝗻𝗲𝗹 💢", url=f"{invite_link.invite_link}"
+                )
+            ]
+        )
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
         BUTTONS[key] = search
